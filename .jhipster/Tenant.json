@@ -1,0 +1,23 @@
+{
+  "annotations": {
+    "changelogDate": "20240524135047"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Tenant",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

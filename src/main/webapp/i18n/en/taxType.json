@@ -1,0 +1,27 @@
+{
+  "mobilePosApp": {
+    "taxType": {
+      "home": {
+        "title": "Tax Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tax Type",
+        "createOrEditLabel": "Create or edit a Tax Type",
+        "notFound": "No Tax Types found"
+      },
+      "created": "A new Tax Type is created with identifier { param }",
+      "updated": "A Tax Type is updated with identifier { param }",
+      "deleted": "A Tax Type is deleted with identifier { param }",
+      "delete": {
+        "question": "Are you sure you want to delete Tax Type { id }?"
+      },
+      "detail": {
+        "title": "Tax Type"
+      },
+      "id": "Id",
+      "code": "Code",
+      "name": "Name",
+      "value": "Value",
+      "notes": "Notes"
+    }
+  }
+}

@@ -1,0 +1,93 @@
+entity Tenant {
+   id UUID required
+   name String required
+}
+
+entity Country {
+    @id isoCode String required maxlength(5)
+	name String required
+}
+
+entity Province {
+    id Integer required
+    name String required maxlength(256)
+}
+
+entity Regency {
+    id Integer required
+	name String required maxlength(256)
+}
+
+relationship OneToMany {
+   Country to Province{country required}
+}
+
+relationship OneToMany {
+   Province to Regency{province required}
+}
+
+entity ProductCategory {
+    id UUID
+    code String required maxlength(128)
+    name String required maxlength(256)
+    notes String maxlength(512)
+}
+
+entity Metric {
+   id Integer required
+   name String required
+   notes String maxlength(256)
+}
+
+entity Product {
+    id UUID required
+    sku String maxlength(128)
+    name String required minlength(3) maxlength(256)
+    barcode String maxlength(128)
+    discountInPercent Float
+    minDiscQty Integer
+    sellPrice Double required
+    isVatApplied Boolean required
+    isActive Boolean required
+    isStockable Boolean required
+    notes String maxlength(512)
+    createdAt Instant
+    createdBy Integer
+    lastUpdatedAt Instant
+    lastUpdatedBy Integer
+}
+
+relationship OneToMany {
+   ProductCategory to Product{category required}
+}
+
+relationship ManyToOne {
+   Product{defaultMetricInv} to Metric,
+   Product{defaultMetricSales} to Metric,
+   Product{defaultMetricPurchase} to Metric
+}
+
+entity TaxType {
+    id Integer
+    code String required maxlength(128)
+    name String required maxlength(128)
+    value Double required
+    notes String maxlength(256)
+}
+
+// Set pagination options
+paginate ProductCategory with infinite-scroll
+paginate Product with pagination
+paginate Province with pagination
+paginate Regency with infinite-scroll
+paginate TaxType with infinite-scroll
+paginate Country with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

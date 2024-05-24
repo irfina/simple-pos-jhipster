@@ -50,6 +50,17 @@ public class CacheConfiguration {
             createCache(cm, com.mobilepos.domain.User.class.getName());
             createCache(cm, com.mobilepos.domain.Authority.class.getName());
             createCache(cm, com.mobilepos.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mobilepos.domain.Tenant.class.getName());
+            createCache(cm, com.mobilepos.domain.Country.class.getName());
+            createCache(cm, com.mobilepos.domain.Country.class.getName() + ".provinces");
+            createCache(cm, com.mobilepos.domain.Province.class.getName());
+            createCache(cm, com.mobilepos.domain.Province.class.getName() + ".regencies");
+            createCache(cm, com.mobilepos.domain.Regency.class.getName());
+            createCache(cm, com.mobilepos.domain.ProductCategory.class.getName());
+            createCache(cm, com.mobilepos.domain.ProductCategory.class.getName() + ".products");
+            createCache(cm, com.mobilepos.domain.Metric.class.getName());
+            createCache(cm, com.mobilepos.domain.Product.class.getName());
+            createCache(cm, com.mobilepos.domain.TaxType.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

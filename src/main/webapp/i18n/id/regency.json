@@ -1,0 +1,25 @@
+{
+  "mobilePosApp": {
+    "regency": {
+      "home": {
+        "title": "Regencies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Buat Regency baru",
+        "createOrEditLabel": "Buat atau edit Regency",
+        "notFound": "No Regencies found"
+      },
+      "created": "Regency dengan id { param } telah dibuat",
+      "updated": "Regency dengan id { param } telah diperbaharui",
+      "deleted": "Regency dengan id { param } telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Regency { id }?"
+      },
+      "detail": {
+        "title": "Regency"
+      },
+      "id": "Id",
+      "name": "Name",
+      "province": "Province"
+    }
+  }
+}

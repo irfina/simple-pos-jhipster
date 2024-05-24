@@ -1,0 +1,25 @@
+{
+  "mobilePosApp": {
+    "metric": {
+      "home": {
+        "title": "Metrics",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Buat Metric baru",
+        "createOrEditLabel": "Buat atau edit Metric",
+        "notFound": "No Metrics found"
+      },
+      "created": "Metric dengan id { param } telah dibuat",
+      "updated": "Metric dengan id { param } telah diperbaharui",
+      "deleted": "Metric dengan id { param } telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Metric { id }?"
+      },
+      "detail": {
+        "title": "Metric"
+      },
+      "id": "Id",
+      "name": "Name",
+      "notes": "Notes"
+    }
+  }
+}

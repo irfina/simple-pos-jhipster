@@ -1,0 +1,24 @@
+{
+  "mobilePosApp": {
+    "tenant": {
+      "home": {
+        "title": "Tenants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Buat Tenant baru",
+        "createOrEditLabel": "Buat atau edit Tenant",
+        "notFound": "No Tenants found"
+      },
+      "created": "Tenant dengan id { param } telah dibuat",
+      "updated": "Tenant dengan id { param } telah diperbaharui",
+      "deleted": "Tenant dengan id { param } telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Tenant { id }?"
+      },
+      "detail": {
+        "title": "Tenant"
+      },
+      "id": "Id",
+      "name": "Name"
+    }
+  }
+}

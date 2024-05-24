@@ -1,0 +1,27 @@
+{
+  "mobilePosApp": {
+    "taxType": {
+      "home": {
+        "title": "Tax Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Buat Tax Type baru",
+        "createOrEditLabel": "Buat atau edit Tax Type",
+        "notFound": "No Tax Types found"
+      },
+      "created": "Tax Type dengan id { param } telah dibuat",
+      "updated": "Tax Type dengan id { param } telah diperbaharui",
+      "deleted": "Tax Type dengan id { param } telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Tax Type { id }?"
+      },
+      "detail": {
+        "title": "Tax Type"
+      },
+      "id": "Id",
+      "code": "Code",
+      "name": "Name",
+      "value": "Value",
+      "notes": "Notes"
+    }
+  }
+}

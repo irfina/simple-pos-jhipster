@@ -1,0 +1,41 @@
+{
+  "mobilePosApp": {
+    "product": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Product",
+        "createOrEditLabel": "Create or edit a Product",
+        "notFound": "No Products found"
+      },
+      "created": "A new Product is created with identifier { param }",
+      "updated": "A Product is updated with identifier { param }",
+      "deleted": "A Product is deleted with identifier { param }",
+      "delete": {
+        "question": "Are you sure you want to delete Product { id }?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "id": "Id",
+      "sku": "Sku",
+      "name": "Name",
+      "barcode": "Barcode",
+      "discountInPercent": "Discount In Percent",
+      "minDiscQty": "Min Disc Qty",
+      "sellPrice": "Sell Price",
+      "isVatApplied": "Is Vat Applied",
+      "isActive": "Is Active",
+      "isStockable": "Is Stockable",
+      "notes": "Notes",
+      "createdAt": "Created At",
+      "createdBy": "Created By",
+      "lastUpdatedAt": "Last Updated At",
+      "lastUpdatedBy": "Last Updated By",
+      "defaultMetricInv": "Default Metric Inv",
+      "defaultMetricSales": "Default Metric Sales",
+      "defaultMetricPurchase": "Default Metric Purchase",
+      "category": "Category"
+    }
+  }
+}

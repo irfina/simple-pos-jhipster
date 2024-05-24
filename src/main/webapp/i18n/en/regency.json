@@ -1,0 +1,25 @@
+{
+  "mobilePosApp": {
+    "regency": {
+      "home": {
+        "title": "Regencies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Regency",
+        "createOrEditLabel": "Create or edit a Regency",
+        "notFound": "No Regencies found"
+      },
+      "created": "A new Regency is created with identifier { param }",
+      "updated": "A Regency is updated with identifier { param }",
+      "deleted": "A Regency is deleted with identifier { param }",
+      "delete": {
+        "question": "Are you sure you want to delete Regency { id }?"
+      },
+      "detail": {
+        "title": "Regency"
+      },
+      "id": "Id",
+      "name": "Name",
+      "province": "Province"
+    }
+  }
+}
