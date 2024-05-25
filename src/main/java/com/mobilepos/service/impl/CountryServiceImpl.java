@@ -5,11 +5,12 @@ import com.mobilepos.repository.CountryRepository;
 import com.mobilepos.service.CountryService;
 import com.mobilepos.service.dto.CountryDTO;
 import com.mobilepos.service.mapper.CountryMapper;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -65,9 +66,9 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<CountryDTO> findAll(Pageable pageable) {
+    public List<CountryDTO> findAll() {
         log.debug("Request to get all Countries");
-        return countryRepository.findAll(pageable).map(countryMapper::toDto);
+        return countryRepository.findAll().stream().map(countryMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override

@@ -81,7 +81,7 @@ paginate Product with pagination
 paginate Province with pagination
 paginate Regency with infinite-scroll
 paginate TaxType with infinite-scroll
-paginate Country with pagination
+//paginate Country with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct

@@ -21,7 +21,6 @@
     }
   ],
   "name": "Country",
-  "pagination": "pagination",
   "relationships": [
     {
       "otherEntityName": "province",

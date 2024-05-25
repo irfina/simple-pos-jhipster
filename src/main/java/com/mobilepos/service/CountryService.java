@@ -1,9 +1,8 @@
 package com.mobilepos.service;
 
 import com.mobilepos.service.dto.CountryDTO;
+import java.util.List;
 import java.util.Optional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 /**
  * Service Interface for managing {@link com.mobilepos.domain.Country}.
@@ -36,10 +35,9 @@ public interface CountryService {
     /**
      * Get all the countries.
      *
-     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<CountryDTO> findAll(Pageable pageable);
+    List<CountryDTO> findAll();
 
     /**
      * Get the "id" country.
