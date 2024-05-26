@@ -1,5 +1,6 @@
 package com.mobilepos.service;
 
+import com.mobilepos.domain.Country;
 import com.mobilepos.service.dto.CountryDTO;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +47,8 @@ public interface CountryService {
      * @return the entity.
      */
     Optional<CountryDTO> findOne(String id);
+
+    Optional<Country> findByIsoCode(String _isoCode);
 
     /**
      * Delete the "id" country.

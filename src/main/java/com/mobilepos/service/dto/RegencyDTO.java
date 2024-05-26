@@ -1,6 +1,7 @@
 package com.mobilepos.service.dto;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public class RegencyDTO implements Serializable {
     private String name;
 
     @NotNull
-    private ProvinceDTO province;
+    private ProvinceDto province;
 
     public Integer getId() {
         return id;
@@ -36,11 +37,11 @@ public class RegencyDTO implements Serializable {
         this.name = name;
     }
 
-    public ProvinceDTO getProvince() {
+    public ProvinceDto getProvince() {
         return province;
     }
 
-    public void setProvince(ProvinceDTO province) {
+    public void setProvince(ProvinceDto province) {
         this.province = province;
     }
 

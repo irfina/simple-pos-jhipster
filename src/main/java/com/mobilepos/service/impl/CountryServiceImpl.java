@@ -79,6 +79,12 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
+    public Optional<Country> findByIsoCode(String _isoCode) {
+        log.debug("Request to get Country by ISO Code : {}", _isoCode);
+        return countryRepository.findById(_isoCode);
+    }
+
+    @Override
     public void delete(String id) {
         log.debug("Request to delete Country : {}", id);
         countryRepository.deleteById(id);

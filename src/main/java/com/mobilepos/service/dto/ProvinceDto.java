@@ -1,6 +1,7 @@
 package com.mobilepos.service.dto;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ import java.util.Objects;
  * A DTO for the {@link com.mobilepos.domain.Province} entity.
  */
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class ProvinceDTO implements Serializable {
+public class ProvinceDto implements Serializable {
 
     @NotNull
     private Integer id;
@@ -49,11 +50,11 @@ public class ProvinceDTO implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof ProvinceDTO)) {
+        if (!(o instanceof ProvinceDto)) {
             return false;
         }
 
-        ProvinceDTO provinceDTO = (ProvinceDTO) o;
+        ProvinceDto provinceDTO = (ProvinceDto) o;
         if (this.id == null) {
             return false;
         }

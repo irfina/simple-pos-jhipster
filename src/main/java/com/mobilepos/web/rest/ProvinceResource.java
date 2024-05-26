@@ -2,7 +2,9 @@ package com.mobilepos.web.rest;
 
 import com.mobilepos.repository.ProvinceRepository;
 import com.mobilepos.service.ProvinceService;
-import com.mobilepos.service.dto.ProvinceDTO;
+import com.mobilepos.service.dto.ProvinceCreateDto;
+import com.mobilepos.service.dto.ProvinceDto;
+import com.mobilepos.service.dto.ProvinceUpdateDto;
 import com.mobilepos.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -50,59 +52,50 @@ public class ProvinceResource {
     /**
      * {@code POST  /provinces} : Create a new province.
      *
-     * @param provinceDTO the provinceDTO to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new provinceDTO, or with status {@code 400 (Bad Request)} if the province has already an ID.
+     * @param _createDto the _createDto to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new _createDto, or with status {@code 400 (Bad Request)} if the province has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<ProvinceDTO> createProvince(@Valid @RequestBody ProvinceDTO provinceDTO) throws URISyntaxException {
-        log.debug("REST request to save Province : {}", provinceDTO);
-        if (provinceDTO.getId() != null) {
-            throw new BadRequestAlertException("A new province cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        provinceDTO = provinceService.save(provinceDTO);
-        return ResponseEntity.created(new URI("/api/provinces/" + provinceDTO.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, provinceDTO.getId().toString()))
-            .body(provinceDTO);
+    public ResponseEntity<ProvinceDto> createProvince(@Valid @RequestBody ProvinceCreateDto _createDto) throws URISyntaxException {
+        log.debug("REST request to save Province : {}", _createDto);
+
+        var provinceDto = provinceService.save(_createDto);
+        return ResponseEntity.created(new URI("/api/provinces/" + provinceDto.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, provinceDto.getId().toString()))
+            .body(provinceDto);
     }
 
     /**
      * {@code PUT  /provinces/:id} : Updates an existing province.
      *
-     * @param id the id of the provinceDTO to save.
-     * @param provinceDTO the provinceDTO to update.
+     * @param id          the id of the provinceDTO to save.
+     * @param _updateDto the provinceDTO to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated provinceDTO,
      * or with status {@code 400 (Bad Request)} if the provinceDTO is not valid,
      * or with status {@code 500 (Internal Server Error)} if the provinceDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<ProvinceDTO> updateProvince(
+    public ResponseEntity<ProvinceDto> updateProvince(
         @PathVariable(value = "id", required = false) final Integer id,
-        @Valid @RequestBody ProvinceDTO provinceDTO
+        @Valid @RequestBody ProvinceUpdateDto _updateDto
     ) throws URISyntaxException {
-        log.debug("REST request to update Province : {}, {}", id, provinceDTO);
-        if (provinceDTO.getId() == null) {
-            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }
-        if (!Objects.equals(id, provinceDTO.getId())) {
-            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
-        }
-
+        log.debug("REST request to update Province : {}, {}", id, _updateDto);
         if (!provinceRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        provinceDTO = provinceService.update(provinceDTO);
+        var provinceDto = provinceService.update(_updateDto);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, provinceDTO.getId().toString()))
-            .body(provinceDTO);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, provinceDto.getId().toString()))
+            .body(provinceDto);
     }
 
     /**
      * {@code PATCH  /provinces/:id} : Partial updates given fields of an existing province, field will ignore if it is null
      *
-     * @param id the id of the provinceDTO to save.
+     * @param id          the id of the provinceDTO to save.
      * @param provinceDTO the provinceDTO to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated provinceDTO,
      * or with status {@code 400 (Bad Request)} if the provinceDTO is not valid,
@@ -111,9 +104,9 @@ public class ProvinceResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<ProvinceDTO> partialUpdateProvince(
+    public ResponseEntity<ProvinceDto> partialUpdateProvince(
         @PathVariable(value = "id", required = false) final Integer id,
-        @NotNull @RequestBody ProvinceDTO provinceDTO
+        @NotNull @RequestBody ProvinceDto provinceDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update Province partially : {}, {}", id, provinceDTO);
         if (provinceDTO.getId() == null) {
@@ -127,7 +120,7 @@ public class ProvinceResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<ProvinceDTO> result = provinceService.partialUpdate(provinceDTO);
+        Optional<ProvinceDto> result = provinceService.partialUpdate(provinceDTO);
 
         return ResponseUtil.wrapOrNotFound(
             result,
@@ -142,9 +135,9 @@ public class ProvinceResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of provinces in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<ProvinceDTO>> getAllProvinces(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
+    public ResponseEntity<List<ProvinceDto>> getAllProvinces(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Provinces");
-        Page<ProvinceDTO> page = provinceService.findAll(pageable);
+        Page<ProvinceDto> page = provinceService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -156,9 +149,9 @@ public class ProvinceResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the provinceDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<ProvinceDTO> getProvince(@PathVariable("id") Integer id) {
+    public ResponseEntity<ProvinceDto> getProvince(@PathVariable("id") Integer id) {
         log.debug("REST request to get Province : {}", id);
-        Optional<ProvinceDTO> provinceDTO = provinceService.findOne(id);
+        Optional<ProvinceDto> provinceDTO = provinceService.findOne(id);
         return ResponseUtil.wrapOrNotFound(provinceDTO);
     }
 

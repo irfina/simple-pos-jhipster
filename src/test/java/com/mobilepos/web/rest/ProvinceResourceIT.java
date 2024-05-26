@@ -1,18 +1,22 @@
 package com.mobilepos.web.rest;
 
-import static com.mobilepos.domain.ProvinceAsserts.*;
+import static com.mobilepos.domain.ProvinceAsserts.assertProvinceAllPropertiesEquals;
+import static com.mobilepos.domain.ProvinceAsserts.assertProvinceAllUpdatablePropertiesEquals;
+import static com.mobilepos.domain.ProvinceAsserts.assertProvinceUpdatableFieldsEquals;
 import static com.mobilepos.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mobilepos.IntegrationTest;
 import com.mobilepos.domain.Country;
 import com.mobilepos.domain.Province;
 import com.mobilepos.repository.ProvinceRepository;
-import com.mobilepos.service.dto.ProvinceDTO;
+import com.mobilepos.service.dto.ProvinceDto;
 import com.mobilepos.service.mapper.ProvinceMapper;
 import jakarta.persistence.EntityManager;
 import java.util.Random;
@@ -112,7 +116,7 @@ class ProvinceResourceIT {
     void createProvince() throws Exception {
         long databaseSizeBeforeCreate = getRepositoryCount();
         // Create the Province
-        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
+        ProvinceDto provinceDTO = provinceMapper.toDto(province);
         var returnedProvinceDTO = om.readValue(
             restProvinceMockMvc
                 .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(provinceDTO)))
@@ -120,7 +124,7 @@ class ProvinceResourceIT {
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            ProvinceDTO.class
+            ProvinceDto.class
         );
 
         // Validate the Province in the database
@@ -134,7 +138,7 @@ class ProvinceResourceIT {
     void createProvinceWithExistingId() throws Exception {
         // Create the Province with an existing ID
         province.setId(1);
-        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
+        ProvinceDto provinceDTO = provinceMapper.toDto(province);
 
         long databaseSizeBeforeCreate = getRepositoryCount();
 
@@ -155,7 +159,7 @@ class ProvinceResourceIT {
         province.setName(null);
 
         // Create the Province, which fails.
-        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
+        ProvinceDto provinceDTO = provinceMapper.toDto(province);
 
         restProvinceMockMvc
             .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(provinceDTO)))
@@ -214,7 +218,7 @@ class ProvinceResourceIT {
         // Disconnect from session so that the updates on updatedProvince are not directly saved in db
         em.detach(updatedProvince);
         updatedProvince.name(UPDATED_NAME);
-        ProvinceDTO provinceDTO = provinceMapper.toDto(updatedProvince);
+        ProvinceDto provinceDTO = provinceMapper.toDto(updatedProvince);
 
         restProvinceMockMvc
             .perform(
@@ -236,7 +240,7 @@ class ProvinceResourceIT {
         province.setId(intCount.incrementAndGet());
 
         // Create the Province
-        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
+        ProvinceDto provinceDTO = provinceMapper.toDto(province);
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restProvinceMockMvc
@@ -258,7 +262,7 @@ class ProvinceResourceIT {
         province.setId(intCount.incrementAndGet());
 
         // Create the Province
-        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
+        ProvinceDto provinceDTO = provinceMapper.toDto(province);
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restProvinceMockMvc
@@ -280,7 +284,7 @@ class ProvinceResourceIT {
         province.setId(intCount.incrementAndGet());
 
         // Create the Province
-        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
+        ProvinceDto provinceDTO = provinceMapper.toDto(province);
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restProvinceMockMvc
@@ -352,7 +356,7 @@ class ProvinceResourceIT {
         province.setId(intCount.incrementAndGet());
 
         // Create the Province
-        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
+        ProvinceDto provinceDTO = provinceMapper.toDto(province);
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restProvinceMockMvc
@@ -374,7 +378,7 @@ class ProvinceResourceIT {
         province.setId(intCount.incrementAndGet());
 
         // Create the Province
-        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
+        ProvinceDto provinceDTO = provinceMapper.toDto(province);
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restProvinceMockMvc
@@ -396,7 +400,7 @@ class ProvinceResourceIT {
         province.setId(intCount.incrementAndGet());
 
         // Create the Province
-        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
+        ProvinceDto provinceDTO = provinceMapper.toDto(province);
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restProvinceMockMvc

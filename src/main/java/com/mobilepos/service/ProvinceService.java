@@ -1,6 +1,8 @@
 package com.mobilepos.service;
 
-import com.mobilepos.service.dto.ProvinceDTO;
+import com.mobilepos.service.dto.ProvinceCreateDto;
+import com.mobilepos.service.dto.ProvinceDto;
+import com.mobilepos.service.dto.ProvinceUpdateDto;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,18 +14,18 @@ public interface ProvinceService {
     /**
      * Save a province.
      *
-     * @param provinceDTO the entity to save.
+     * @param _createDto the entity to save.
      * @return the persisted entity.
      */
-    ProvinceDTO save(ProvinceDTO provinceDTO);
+    ProvinceDto save(ProvinceCreateDto _createDto);
 
     /**
      * Updates a province.
      *
-     * @param provinceDTO the entity to update.
+     * @param _updateDto the entity to update.
      * @return the persisted entity.
      */
-    ProvinceDTO update(ProvinceDTO provinceDTO);
+    ProvinceDto update(ProvinceUpdateDto _updateDto);
 
     /**
      * Partially updates a province.
@@ -31,7 +33,7 @@ public interface ProvinceService {
      * @param provinceDTO the entity to update partially.
      * @return the persisted entity.
      */
-    Optional<ProvinceDTO> partialUpdate(ProvinceDTO provinceDTO);
+    Optional<ProvinceDto> partialUpdate(ProvinceDto provinceDTO);
 
     /**
      * Get all the provinces.
@@ -39,7 +41,7 @@ public interface ProvinceService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<ProvinceDTO> findAll(Pageable pageable);
+    Page<ProvinceDto> findAll(Pageable pageable);
 
     /**
      * Get the "id" province.
@@ -47,7 +49,7 @@ public interface ProvinceService {
      * @param id the id of the entity.
      * @return the entity.
      */
-    Optional<ProvinceDTO> findOne(Integer id);
+    Optional<ProvinceDto> findOne(Integer id);
 
     /**
      * Delete the "id" province.
