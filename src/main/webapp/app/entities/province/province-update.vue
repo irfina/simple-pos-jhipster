@@ -37,7 +37,7 @@
                 v-for="countryOption in countries"
                 :key="countryOption.isoCode"
               >
-                {{ countryOption.isoCode }}
+                {{ countryOption.name }}
               </option>
             </select>
           </div>

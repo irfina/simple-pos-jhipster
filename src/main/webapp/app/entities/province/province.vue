@@ -46,13 +46,13 @@
         <tbody>
           <tr v-for="province in provinces" :key="province.id" data-cy="entityTable">
             <td>
-              <router-link :to="{ name: 'ProvinceView', params: { provinceId: province.id } }">{{ province.id }}</router-link>
+              <router-link :to="{ name: 'ProvinceView', params: { provinceId: province.id } }">{{ province.name }}</router-link>
             </td>
             <td>{{ province.name }}</td>
             <td>
               <div v-if="province.country">
                 <router-link :to="{ name: 'CountryView', params: { countryId: province.country.isoCode } }">{{
-                  province.country.isoCode
+                  province.country.name
                 }}</router-link>
               </div>
             </td>
